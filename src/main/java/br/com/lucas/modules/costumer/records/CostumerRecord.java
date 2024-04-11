@@ -4,13 +4,15 @@ import br.com.lucas.modules.costumer.entities.Costumer;
 import jakarta.validation.constraints.*;
 
 public record CostumerRecord(
-        @NotBlank(message = "● É necessário que esteja preenchido os campos.\n ")
-        @NotNull(message = "● É necessário que o campo preenchido não seja nulo. \n")
-        @Size(min = 8, message = "A senha deve possui pelo menos 08 caracteres.")
-        @Pattern(regexp = ".*[1-9]*.", message = "A senha deve conter pelo menos um dígito numérico")
-        @Pattern(regexp = ".*[a-z].*", message = "A senha deve conter pelo menos uma letra minúscula.")
-        @Pattern(regexp = ".*[A-z].*", message = "A senha deve conter pelo menos uma letra maiúscula.")
-        @Pattern(regexp = ".*[\\W].*", message = "A senha deve conter pelo menos um caractere especial (e.g, !@#$%).")
+
+        @NotBlank(message = "● All fields are required.\n")
+        @NotNull(message = "● The field must not be null.\n")
+        @Size(min = 8, message = "The password must have at least 8 characters.\n")
+        @Pattern(regexp = ".*\\d.*", message = "The password must contain at least one numeric digit.\n")
+        @Pattern(regexp = ".*[a-z].*", message = "The password must contain at least one lowercase letter.\n")
+        @Pattern(regexp = ".*[A-Z].*", message = "The password must contain at least one uppercase letter.\n")
+        @Pattern(regexp = ".*\\W.*", message = "The password must contain at least one special character (e.g., !@#$%).\n")
+
         String password) {
 
     public Costumer convertToCostumer(){
